@@ -56,7 +56,8 @@ class Siswa {
         return;
       }
     }
-    System.out.println("Siswa not found.");
+    System.out.println();
+    System.out.println("Siswa tidak ditemukan.");
   }
 
   // Method to delete a student by ID
@@ -107,8 +108,7 @@ class Siswa {
     if (siswa == null) {
       System.out.println();
       System.out.println("Siswa tidak ditemukan.");
-      
-      Menu.tampilMenu();
+      Menu.menuAdminSiswa();
     }
 
     ArrayList<String> records = Absen.attendanceRecords.get(nis);
@@ -116,7 +116,7 @@ class Siswa {
       System.out.println("Kehadiran untuk NIS " + nis + ": " + records);
     } else {
       System.out.println("Siswa dengan NIS " + nis + " tidak hadir.");
-      Menu.tampilMenu();
+      Menu.menuAdminSiswa();
     }
 
     Menu.menuSiswa();

@@ -159,7 +159,7 @@ public class Menu {
         }
         case 5 -> Siswa.cekPresensi();
         case 6 -> Menu.tampilMenu(); // Go back to the main menu
-         default -> {
+        default -> {
           System.out.println();
           System.out.println("Menu tidak ditemukan, mohon diulang");
         }
