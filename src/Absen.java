@@ -41,7 +41,9 @@ public class Absen {
 
         manageAttendance();
     } else {
-        System.out.println("Siswa tidak ditemukan.");
+      System.out.println();
+      System.out.println("Siswa tidak ditemukan.");
+      manageAttendance();
     }
 
     scanner.close();
