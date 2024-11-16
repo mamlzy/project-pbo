@@ -109,6 +109,7 @@ class Siswa {
 
     Siswa siswa = Siswa.getSiswaById(nis);
     if (siswa == null) {
+      System.out.println();
         System.out.println("Siswa tidak ditemukan.");
         Menu.tampilMenu();
     }
@@ -141,6 +142,7 @@ class Siswa {
       System.out.println("Nama: " + siswa.getNama());
 
     } else {
+      System.out.println();
       System.out.println("Siswa tidak ditemukan.");
     } 
 

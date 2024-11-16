@@ -35,17 +35,16 @@ public class Absen {
 
     Siswa siswa = Siswa.getSiswaById(siswaId);
     if (siswa != null) {
+      attendanceRecords.computeIfAbsent(siswaId, k -> new ArrayList<>()).add("Hadir");
+      System.out.println();
+      System.out.println("Presensi Berhasil dengan Nama " + siswa.getNama());
 
-        attendanceRecords.computeIfAbsent(siswaId, k -> new ArrayList<>()).add("Hadir");
-        System.out.println("Presensi Berhasil dengan Nama " + siswa.getNama());
-
-        manageAttendance();
     } else {
       System.out.println();
       System.out.println("Siswa tidak ditemukan.");
-      manageAttendance();
     }
-
+    
+    manageAttendance();
     scanner.close();
   }
 
@@ -66,6 +65,7 @@ public class Absen {
 
         Siswa siswa = Siswa.getSiswaById(siswaId);
 
+        System.out.println();
         System.out.println("Absen untuk Siswa: " + siswa.getNama() + " - " + siswa.getNis() + ": " + records);
     }
 
