@@ -90,7 +90,7 @@ class Siswa {
     System.out.println("Nama: " + siswa.getNama());
     System.out.println("NIS: " + siswa.getNis());
 
-    Menu.studentAccess();
+    Menu.menuSiswa();
 
     scanner.close();
   }
@@ -118,7 +118,7 @@ class Siswa {
       Menu.tampilMenu();
     }
 
-    Menu.studentAccess();
+    Menu.menuSiswa();
 
     scanner.close();
   }
@@ -142,7 +142,7 @@ class Siswa {
       System.out.println("Siswa tidak ditemukan.");
     }
 
-    Menu.teacherAccess();
+    Menu.menuGuru();
 
     scanner.close();
   }

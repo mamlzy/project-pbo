@@ -98,7 +98,7 @@ class Guru {
       System.out.println("Guru tidak ditemukan.");
     }
 
-    Menu.teacherAccess();
+    Menu.menuGuru();
 
     scanner.close();
   }

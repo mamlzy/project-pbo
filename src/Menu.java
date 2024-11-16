@@ -12,13 +12,13 @@ public class Menu {
 
     if (username.equals("siswa") && password.equals("rahasia")) {
       System.out.println("Login successful! Welcome, Student.");
-      studentAccess();
+      menuSiswa();
     } else if (username.equals("guru") && password.equals("rahasia")) {
       System.out.println("Login successful! Welcome, Teacher.");
-      teacherAccess();
+      menuGuru();
     } else if (username.equals("admin") && password.equals("rahasia")) {
       System.out.println("Login successful! Welcome, Administration.");
-      adminAccess();
+      menuAdmin();
     } else {
       System.out.println("Invalid username or password.");
     }
@@ -26,7 +26,7 @@ public class Menu {
     scanner.close();
   }
 
-  public static void studentAccess() {
+  public static void menuSiswa() {
     Scanner scanner = new Scanner(System.in);
 
     boolean exit = false;
@@ -50,7 +50,7 @@ public class Menu {
     scanner.close();
   }
 
-  public static void teacherAccess() {
+  public static void menuGuru() {
     Scanner scanner = new Scanner(System.in);
 
     boolean exit = false;
@@ -75,7 +75,7 @@ public class Menu {
   }
 
   // Main menu to choose between Siswa and Guru
-  public static void adminAccess() {
+  public static void menuAdmin() {
     Scanner scanner = new Scanner(System.in);
 
     boolean exit = false;
@@ -89,8 +89,8 @@ public class Menu {
       scanner.nextLine(); // Consume newline
 
       switch (choice) {
-        case 1 -> adminAccessSiswa();
-        case 2 -> adminAccessGuru();
+        case 1 -> menuAdminSiswa();
+        case 2 -> menuAdminGuru();
         case 3 -> {
           System.out.println();
           tampilMenu();
@@ -103,7 +103,7 @@ public class Menu {
   }
 
   // Admin access for Siswa (students)
-  public static void adminAccessSiswa() {
+  public static void menuAdminSiswa() {
     Scanner scanner = new Scanner(System.in);
 
     boolean exit = false;
@@ -158,7 +158,7 @@ public class Menu {
   }
 
   // Admin access for Guru (teachers)
-  public static void adminAccessGuru() {
+  public static void menuAdminGuru() {
     Scanner scanner = new Scanner(System.in);
     boolean exit = false;
     while (!exit) {

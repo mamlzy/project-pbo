@@ -69,7 +69,7 @@ public class Absen {
       System.out.println("Absen untuk Siswa: " + siswa.getNama() + " - " + siswa.getNis() + ": " + records);
     }
 
-    Menu.teacherAccess();
+    Menu.menuGuru();
 
     scanner.close();
   }
