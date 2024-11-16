@@ -1,14 +1,11 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class Guru {
-  private int id;
-  private String nama;
+class Guru extends User implements OperasiCRUD {
   private static ArrayList<Guru> guruList = new ArrayList<>();
 
   public Guru(int id, String nama) {
-    this.id = id;
-    this.nama = nama;
+    super(id, nama);
   }
 
   @Override
@@ -23,21 +20,25 @@ class Guru {
   public String getNama() {
     return nama;
   }
+  
+  @Override
+  public String getDetails() {
+      return "Siswa - NIS: " + id + ", Nama: " + nama;
+  }
 
   // Method to create a new student and add to the list
-  public static void createGuru(int id, String nama) {
+  public static void create(int id, String nama) {
     Guru newSiswa = new Guru(id, nama);
     System.out.println(nama);
 
     guruList.add(newSiswa);
-    System.out.println("Guru added successfully!");
+    System.out.println("Guru berhasil ditambahkan!");
   }
 
-  // Method to view all students
-  public static void viewGuru() {
-    System.out.println("\n--- List of Guru ---");
+  public static void readAll() {
+    System.out.println("\n--- Daftar Guru ---");
     if (guruList.isEmpty()) {
-      System.out.println("No students found.");
+      System.out.println("Guru tidak ditemukan.");
     } else {
       int index = 1;
       for (Guru guru : guruList) {
@@ -48,7 +49,7 @@ class Guru {
   }
 
   // Method to update a student's name by NIS
-  public static void updateGuru(int id, String newName) {
+  public static void update(int id, String newName) {
     for (Guru guru : guruList) {
       if (guru.id == id) {
         guru.nama = newName;
@@ -60,7 +61,7 @@ class Guru {
   }
 
   // Method to delete a student by ID
-  public static void deleteGuru(int id) {
+  public static void delete(int id) {
     for (Guru guru : guruList) {
       if (guru.id == id) {
         guruList.remove(guru);

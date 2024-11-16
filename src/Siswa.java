@@ -1,23 +1,20 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class Siswa {
-  private int nis;
-  private String nama;
+class Siswa extends User implements OperasiCRUD {
   private static ArrayList<Siswa> siswaList = new ArrayList<>();
 
-  public Siswa(int nis, String nama) {
-    this.nis = nis;
-    this.nama = nama;
+  public Siswa(int id, String nama) {
+    super(id, nama);
   }
 
   @Override
-  public String toString() {
-    return nama;
+  public String getDetails() {
+      return "Siswa - NIS: " + id + ", Nama: " + nama;
   }
 
   public int getNis() {
-    return nis;
+    return id;
   }
 
   public String getNama() {
@@ -25,8 +22,8 @@ class Siswa {
   }
 
   // Method to create a new student and add to the list
-  public static void createSiswa(int nis, String nama) {
-    Siswa newSiswa = new Siswa(nis, nama);
+  public static void create(int id, String nama) {
+    Siswa newSiswa = new Siswa(id, nama);
     System.out.println(nama);
 
     siswaList.add(newSiswa);
@@ -34,23 +31,23 @@ class Siswa {
   }
 
   // Method to view all students
-  public static void viewSiswa() {
-    System.out.println("\n--- List of Siswa ---");
+  public static void readAll() { 
+    System.out.println("\n--- Daftar Siswa ---");
     if (siswaList.isEmpty()) {
       System.out.println("No students found.");
     } else {
       int index = 1;
       for (Siswa siswa : siswaList) {
-        System.out.println(index + ". " + siswa.nama + " - " + siswa.nis);
+        System.out.println(index + ". " + siswa.nama + " - " + siswa.id);
         index++;
       }
     }
   }
 
   // Method to update a student's name by NIS
-  public static void updateSiswa(int nis, String newName) {
+  public static void update(int id, String newName) {
     for (Siswa siswa : siswaList) {
-      if (siswa.nis == nis) {
+      if (siswa.id == id) {
         siswa.nama = newName;
         System.out.println("Siswa updated successfully!");
         return;
@@ -61,9 +58,9 @@ class Siswa {
   }
 
   // Method to delete a student by ID
-  public static void deleteSiswa(int nis) {
+  public static void delete(int id) {
     for (Siswa siswa : siswaList) {
-      if (siswa.nis == nis) {
+      if (siswa.id == id) {
         siswaList.remove(siswa);
         System.out.println("Siswa deleted successfully!");
         return;
@@ -72,9 +69,9 @@ class Siswa {
     System.out.println("Siswa not found.");
   }
 
-  public static Siswa getSiswaById(int nis) {
+  public static Siswa getSiswaById(int id) {
     for (Siswa siswa : siswaList) {
-      if (siswa.nis == nis) {
+      if (siswa.id == id) {
         return siswa;
       }
     }
@@ -84,9 +81,9 @@ class Siswa {
   public static void cekBiodata() {
     Scanner scanner = new Scanner(System.in);
     System.out.print("Enter NIS: ");
-    int nis = scanner.nextInt();
+    int id = scanner.nextInt();
 
-    Siswa siswa = Siswa.getSiswaById(nis);
+    Siswa siswa = Siswa.getSiswaById(id);
 
     System.out.println("Nama: " + siswa.getNama());
     System.out.println("NIS: " + siswa.getNis());
@@ -101,21 +98,21 @@ class Siswa {
 
     Scanner scanner = new Scanner(System.in);
 
-    int nis = scanner.nextInt();
+    int id = scanner.nextInt();
     scanner.nextLine();
 
-    Siswa siswa = Siswa.getSiswaById(nis);
+    Siswa siswa = Siswa.getSiswaById(id);
     if (siswa == null) {
       System.out.println();
       System.out.println("Siswa tidak ditemukan.");
       Menu.menuAdminSiswa();
     }
 
-    ArrayList<String> records = Absen.attendanceRecords.get(nis);
+    ArrayList<String> records = Absen.attendanceRecords.get(id);
     if (records != null && !records.isEmpty()) {
-      System.out.println("Kehadiran untuk NIS " + nis + ": " + records);
+      System.out.println("Kehadiran untuk NIS " + id + ": " + records);
     } else {
-      System.out.println("Siswa dengan NIS " + nis + " tidak hadir.");
+      System.out.println("Siswa dengan NIS " + id + " tidak hadir.");
       Menu.menuAdminSiswa();
     }
 

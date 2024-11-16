@@ -52,8 +52,10 @@ public class Absen {
     Scanner scanner = new Scanner(System.in);
     // Memastikan bahwa attendanceRecords tidak kosong
     if (attendanceRecords.isEmpty()) {
+      System.out.println();
       System.out.println("Data Presensi Tidak Ditemukan!");
 
+      Absen.manageAttendance();
       scanner.close();
       return;
     }
