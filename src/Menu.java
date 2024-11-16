@@ -37,13 +37,16 @@ public class Menu {
       System.out.println("3. Logout");
       System.out.print("Pilih opsi berikut: ");
       int choice = scanner.nextInt();
-      scanner.nextLine(); // Consume newline
+      scanner.nextLine(); 
 
       switch (choice) {
         case 1 -> Siswa.cekBiodata();
         case 2 -> Siswa.cekPresensi();
         case 3 -> tampilMenu();
-        default -> System.out.println("Invalid choice. Please try again.");
+        default -> {
+          System.out.println();
+          System.out.println("Menu tidak ditemukan, mohon diulang");
+        }
       }
     }
 
@@ -61,13 +64,16 @@ public class Menu {
       System.out.println("3. Logout");
       System.out.print("Pilih opsi berikut: ");
       int choice = scanner.nextInt();
-      scanner.nextLine(); // Consume newline
+      scanner.nextLine(); 
 
       switch (choice) {
         case 1 -> Absen.manageAttendance();
         case 2 -> Siswa.cariSiswa();
         case 3 -> tampilMenu();
-        default -> System.out.println("Invalid choice. Please try again.");
+         default -> {
+          System.out.println();
+          System.out.println("Menu tidak ditemukan, mohon diulang");
+        }
       }
     }
 
@@ -80,13 +86,13 @@ public class Menu {
 
     boolean exit = false;
     while (!exit) {
-      System.out.println("\n--- Menu Tata Usaha ---");
+      System.out.println("\n--- Menu Admin ---");
       System.out.println("1. Data Siswa");
       System.out.println("2. Data Guru");
       System.out.println("3. Logout");
       System.out.print("Pilih opsi berikut: ");
       int choice = scanner.nextInt();
-      scanner.nextLine(); // Consume newline
+      scanner.nextLine(); 
 
       switch (choice) {
         case 1 -> menuAdminSiswa();
@@ -95,7 +101,10 @@ public class Menu {
           System.out.println();
           tampilMenu();
         }
-        default -> System.out.println("Invalid choice. Please try again.");
+         default -> {
+          System.out.println();
+          System.out.println("Menu tidak ditemukan, mohon diulang");
+        }
       }
     }
 
@@ -108,7 +117,7 @@ public class Menu {
 
     boolean exit = false;
     while (!exit) {
-      System.out.println("\n--- Admin Menu (Siswa) ---");
+      System.out.println("\n--- Menu Admin (Siswa) ---");
       System.out.println("1. Create Siswa");
       System.out.println("2. View Siswa");
       System.out.println("3. Update Siswa");
@@ -117,40 +126,43 @@ public class Menu {
       System.out.println("6. Back to Main Menu");
       System.out.print("Pilih opsi berikut: ");
       int choice = scanner.nextInt();
-      scanner.nextLine(); // Consume newline
+      scanner.nextLine(); 
 
       switch (choice) {
         case 1 -> {
-          System.out.print("Enter Siswa ID: ");
+          System.out.print("Masukkan NIS: ");
           int id = scanner.nextInt();
-          scanner.nextLine(); // Consume newline
+          scanner.nextLine(); 
 
-          System.out.print("Enter Siswa name: ");
+          System.out.print("Masukkan nama siswa: ");
           String name = scanner.nextLine();
 
           Siswa.createSiswa(id, name);
         }
         case 2 -> Siswa.viewSiswa();
         case 3 -> {
-          System.out.print("Enter the Siswa ID to update: ");
+          System.out.print("Masukkan NIS siswa yang ingin diubah: ");
           int id = scanner.nextInt();
-          scanner.nextLine(); // Consume newline
+          scanner.nextLine(); 
 
-          System.out.print("Enter new name for Siswa: ");
+          System.out.print("Masukkan nama baru siswa: ");
           String newName = scanner.nextLine();
 
           Siswa.updateSiswa(id, newName);
         }
         case 4 -> {
-          System.out.print("Enter the Siswa ID to delete: ");
+          System.out.print("Masukkan NIS siswa yang ingin dihapus: ");
           int id = scanner.nextInt();
-          scanner.nextLine(); // Consume newline
+          scanner.nextLine(); 
 
           Siswa.deleteSiswa(id);
         }
         case 5 -> Siswa.cekPresensi();
         case 6 -> Menu.tampilMenu(); // Go back to the main menu
-        default -> System.out.println("Invalid choice. Please try again.");
+         default -> {
+          System.out.println();
+          System.out.println("Menu tidak ditemukan, mohon diulang");
+        }
       }
     }
 
@@ -162,21 +174,21 @@ public class Menu {
     Scanner scanner = new Scanner(System.in);
     boolean exit = false;
     while (!exit) {
-      System.out.println("\n--- Admin Menu (Guru) ---");
-      System.out.println("1. Create Guru");
-      System.out.println("2. View Guru");
-      System.out.println("3. Update Guru");
-      System.out.println("4. Delete Guru");
-      System.out.println("5. Back to Main Menu");
+      System.out.println("\n--- Menu Admin (Guru) ---");
+      System.out.println("1. Tambah Guru");
+      System.out.println("2. Lihat Guru");
+      System.out.println("3. Ubah Guru");
+      System.out.println("4. Hapus Guru");
+      System.out.println("5. Kembali ke Menu Utama");
       System.out.print("Pilih opsi berikut: ");
       int choice = scanner.nextInt();
-      scanner.nextLine(); // Consume newline
+      scanner.nextLine(); 
 
       switch (choice) {
         case 1 -> {
           System.out.print("Enter Guru ID: ");
           int id = scanner.nextInt();
-          scanner.nextLine(); // Consume newline
+          scanner.nextLine(); 
 
           System.out.print("Enter Guru name: ");
           String name = scanner.nextLine();
@@ -187,7 +199,7 @@ public class Menu {
         case 3 -> {
           System.out.print("Enter the Guru ID to update: ");
           int id = scanner.nextInt();
-          scanner.nextLine(); // Consume newline
+          scanner.nextLine(); 
 
           System.out.print("Enter new name for Guru: ");
           String newName = scanner.nextLine();
@@ -197,12 +209,15 @@ public class Menu {
         case 4 -> {
           System.out.print("Enter the Guru ID to delete: ");
           int id = scanner.nextInt();
-          scanner.nextLine(); // Consume newline
+          scanner.nextLine(); 
 
           Guru.deleteGuru(id);
         }
-        case 5 -> exit = true;
-        default -> System.out.println("Invalid choice. Please try again.");
+        case 5 -> menuAdmin();
+         default -> {
+          System.out.println();
+          System.out.println("Menu tidak ditemukan, mohon diulang");
+        }
       }
     }
 

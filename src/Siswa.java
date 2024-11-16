@@ -107,6 +107,7 @@ class Siswa {
     if (siswa == null) {
       System.out.println();
       System.out.println("Siswa tidak ditemukan.");
+      
       Menu.tampilMenu();
     }
 

@@ -14,7 +14,7 @@ public class Absen {
 
     Scanner scanner = new Scanner(System.in);
     int choice = scanner.nextInt();
-    scanner.nextLine(); // Consume newline
+    scanner.nextLine(); 
 
     switch (choice) {
       case 1 -> catatPresensi();
