@@ -9,5 +9,9 @@
       Guru.create(333, "Prabowo");
 
       Menu.tampilMenu();
+
+
+      // Bang Fuji
+      // Bang Audhe
     }
   }
