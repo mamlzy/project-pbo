@@ -26,8 +26,6 @@ public class Menu {
     scanner.close();
   }
 
-  
-
   public static void studentAccess() {
     Scanner scanner = new Scanner(System.in);
 
@@ -42,10 +40,10 @@ public class Menu {
       scanner.nextLine(); // Consume newline
 
       switch (choice) {
-          case 1 -> Siswa.cekBiodata();
-          case 2 -> Siswa.cekPresensi();
-          case 3 -> tampilMenu();
-          default -> System.out.println("Invalid choice. Please try again.");
+        case 1 -> Siswa.cekBiodata();
+        case 2 -> Siswa.cekPresensi();
+        case 3 -> tampilMenu();
+        default -> System.out.println("Invalid choice. Please try again.");
       }
     }
 
@@ -57,7 +55,7 @@ public class Menu {
 
     boolean exit = false;
     while (!exit) {
-      System.out.println("\n--- Main Menu ---");
+      System.out.println("\n--- Menu Guru ---");
       System.out.println("1. Absensi");
       System.out.println("2. Cari Siswa");
       System.out.println("3. Logout");
@@ -66,10 +64,10 @@ public class Menu {
       scanner.nextLine(); // Consume newline
 
       switch (choice) {
-          case 1 -> Absen.manageAttendance();
-          case 2 -> Siswa.cariSiswa();
-          case 3 -> tampilMenu();
-          default -> System.out.println("Invalid choice. Please try again.");
+        case 1 -> Absen.manageAttendance();
+        case 2 -> Siswa.cariSiswa();
+        case 3 -> tampilMenu();
+        default -> System.out.println("Invalid choice. Please try again.");
       }
     }
 
@@ -82,19 +80,22 @@ public class Menu {
 
     boolean exit = false;
     while (!exit) {
-      System.out.println("\n--- Main Menu ---");
+      System.out.println("\n--- Menu Tata Usaha ---");
       System.out.println("1. Data Siswa");
       System.out.println("2. Data Guru");
-      System.out.println("3. Exit");
+      System.out.println("3. Logout");
       System.out.print("Pilih opsi berikut: ");
       int choice = scanner.nextInt();
       scanner.nextLine(); // Consume newline
 
       switch (choice) {
-          case 1 -> adminAccessSiswa();
-          case 2 -> adminAccessGuru();
-          case 3 -> exit = true;
-          default -> System.out.println("Invalid choice. Please try again.");
+        case 1 -> adminAccessSiswa();
+        case 2 -> adminAccessGuru();
+        case 3 -> {
+          System.out.println();
+          tampilMenu();
+        }
+        default -> System.out.println("Invalid choice. Please try again.");
       }
     }
 
@@ -107,50 +108,50 @@ public class Menu {
 
     boolean exit = false;
     while (!exit) {
-        System.out.println("\n--- Admin Menu (Siswa) ---");
-        System.out.println("1. Create Siswa");
-        System.out.println("2. View Siswa");
-        System.out.println("3. Update Siswa");
-        System.out.println("4. Delete Siswa");
-        System.out.println("5. Cek Presensi Siswa");
-        System.out.println("6. Back to Main Menu");
-        System.out.print("Pilih opsi berikut: ");
-        int choice = scanner.nextInt();
-        scanner.nextLine(); // Consume newline
+      System.out.println("\n--- Admin Menu (Siswa) ---");
+      System.out.println("1. Create Siswa");
+      System.out.println("2. View Siswa");
+      System.out.println("3. Update Siswa");
+      System.out.println("4. Delete Siswa");
+      System.out.println("5. Cek Presensi Siswa");
+      System.out.println("6. Back to Main Menu");
+      System.out.print("Pilih opsi berikut: ");
+      int choice = scanner.nextInt();
+      scanner.nextLine(); // Consume newline
 
-        switch (choice) {
-            case 1 -> {
-                System.out.print("Enter Siswa ID: ");
-                int id = scanner.nextInt();
-                scanner.nextLine(); // Consume newline
+      switch (choice) {
+        case 1 -> {
+          System.out.print("Enter Siswa ID: ");
+          int id = scanner.nextInt();
+          scanner.nextLine(); // Consume newline
 
-                System.out.print("Enter Siswa name: ");
-                String name = scanner.nextLine();
+          System.out.print("Enter Siswa name: ");
+          String name = scanner.nextLine();
 
-                Siswa.createSiswa(id, name);
-            }
-            case 2 -> Siswa.viewSiswa();
-            case 3 -> {
-                System.out.print("Enter the Siswa ID to update: ");
-                int id = scanner.nextInt();
-                scanner.nextLine(); // Consume newline
-
-                System.out.print("Enter new name for Siswa: ");
-                String newName = scanner.nextLine();
-
-                Siswa.updateSiswa(id, newName);
-            }
-            case 4 -> {
-                System.out.print("Enter the Siswa ID to delete: ");
-                int id = scanner.nextInt();
-                scanner.nextLine(); // Consume newline
-
-                Siswa.deleteSiswa(id);
-            }
-            case 5 -> Siswa.cekPresensi();
-            case 6 -> Menu.tampilMenu(); // Go back to the main menu
-            default -> System.out.println("Invalid choice. Please try again.");
+          Siswa.createSiswa(id, name);
         }
+        case 2 -> Siswa.viewSiswa();
+        case 3 -> {
+          System.out.print("Enter the Siswa ID to update: ");
+          int id = scanner.nextInt();
+          scanner.nextLine(); // Consume newline
+
+          System.out.print("Enter new name for Siswa: ");
+          String newName = scanner.nextLine();
+
+          Siswa.updateSiswa(id, newName);
+        }
+        case 4 -> {
+          System.out.print("Enter the Siswa ID to delete: ");
+          int id = scanner.nextInt();
+          scanner.nextLine(); // Consume newline
+
+          Siswa.deleteSiswa(id);
+        }
+        case 5 -> Siswa.cekPresensi();
+        case 6 -> Menu.tampilMenu(); // Go back to the main menu
+        default -> System.out.println("Invalid choice. Please try again.");
+      }
     }
 
     scanner.close();
@@ -172,42 +173,41 @@ public class Menu {
       scanner.nextLine(); // Consume newline
 
       switch (choice) {
-          case 1 -> {
-              System.out.print("Enter Guru ID: ");
-              int id = scanner.nextInt();
-              scanner.nextLine(); // Consume newline
+        case 1 -> {
+          System.out.print("Enter Guru ID: ");
+          int id = scanner.nextInt();
+          scanner.nextLine(); // Consume newline
 
-              System.out.print("Enter Guru name: ");
-              String name = scanner.nextLine();
+          System.out.print("Enter Guru name: ");
+          String name = scanner.nextLine();
 
-              Guru.createGuru(id, name);
-          }
-          case 2 -> Guru.viewGuru();
-          case 3 -> {
-              System.out.print("Enter the Guru ID to update: ");
-              int id = scanner.nextInt();
-              scanner.nextLine(); // Consume newline
+          Guru.createGuru(id, name);
+        }
+        case 2 -> Guru.viewGuru();
+        case 3 -> {
+          System.out.print("Enter the Guru ID to update: ");
+          int id = scanner.nextInt();
+          scanner.nextLine(); // Consume newline
 
-              System.out.print("Enter new name for Guru: ");
-              String newName = scanner.nextLine();
+          System.out.print("Enter new name for Guru: ");
+          String newName = scanner.nextLine();
 
-              Guru.updateGuru(id, newName);
-          }
-          case 4 -> {
-              System.out.print("Enter the Guru ID to delete: ");
-              int id = scanner.nextInt();
-              scanner.nextLine(); // Consume newline
+          Guru.updateGuru(id, newName);
+        }
+        case 4 -> {
+          System.out.print("Enter the Guru ID to delete: ");
+          int id = scanner.nextInt();
+          scanner.nextLine(); // Consume newline
 
-              Guru.deleteGuru(id);
-          }
-          case 5 -> exit = true;
-          default -> System.out.println("Invalid choice. Please try again.");
+          Guru.deleteGuru(id);
+        }
+        case 5 -> exit = true;
+        default -> System.out.println("Invalid choice. Please try again.");
       }
     }
 
     scanner.close();
   }
-
 
   // penutup MAIN
 }

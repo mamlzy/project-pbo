@@ -7,7 +7,7 @@ public class Absen {
   public static HashMap<Integer, ArrayList<String>> attendanceRecords = new HashMap<>();
 
   public static void manageAttendance() {
-    System.out.println("\n--- Absensi Menu ---");
+    System.out.println("\n--- Menu Absensi ---");
     System.out.println("1. Pencatatan Presensi");
     System.out.println("2. Lihat Presensi");
     System.out.print("Pilih opsi berikut: ");
@@ -17,14 +17,14 @@ public class Absen {
     scanner.nextLine(); // Consume newline
 
     switch (choice) {
-        case 1 -> catatPresensi();
-        case 2 -> lihatPresensi();
-        
-        default -> System.out.println("Invalid choice.");
+      case 1 -> catatPresensi();
+      case 2 -> lihatPresensi();
+
+      default -> System.out.println("Invalid choice.");
     }
 
     scanner.close();
-}
+  }
 
   public static void catatPresensi() {
     System.out.print("Masukkan NIS: ");
@@ -43,7 +43,7 @@ public class Absen {
       System.out.println();
       System.out.println("Siswa tidak ditemukan.");
     }
-    
+
     manageAttendance();
     scanner.close();
   }
@@ -52,25 +52,25 @@ public class Absen {
     Scanner scanner = new Scanner(System.in);
     // Memastikan bahwa attendanceRecords tidak kosong
     if (attendanceRecords.isEmpty()) {
-        System.out.println("Data Presensi Tidak Ditemukan!");
+      System.out.println("Data Presensi Tidak Ditemukan!");
 
-        scanner.close();
-        return;
+      scanner.close();
+      return;
     }
 
     // Menampilkan semua data absen tanpa meminta ID siswa
     for (Map.Entry<Integer, ArrayList<String>> entry : attendanceRecords.entrySet()) {
-        int siswaId = entry.getKey();
-        ArrayList<String> records = entry.getValue();
+      int siswaId = entry.getKey();
+      ArrayList<String> records = entry.getValue();
 
-        Siswa siswa = Siswa.getSiswaById(siswaId);
+      Siswa siswa = Siswa.getSiswaById(siswaId);
 
-        System.out.println();
-        System.out.println("Absen untuk Siswa: " + siswa.getNama() + " - " + siswa.getNis() + ": " + records);
+      System.out.println();
+      System.out.println("Absen untuk Siswa: " + siswa.getNama() + " - " + siswa.getNis() + ": " + records);
     }
 
     Menu.teacherAccess();
 
     scanner.close();
-  }  
+  }
 }
