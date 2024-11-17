@@ -23,8 +23,8 @@ class Guru extends User implements OperasiCRUD {
   
   @Override
   public String getDetails() {
-      return "Siswa - NIS: " + id + ", Nama: " + nama;
-  }
+      return nama + " - " + id
+;  }
 
   // Method to create a new student and add to the list
   public static void create(int id, String nama) {
@@ -36,13 +36,13 @@ class Guru extends User implements OperasiCRUD {
   }
 
   public static void readAll() {
-    System.out.println("\n--- Daftar Guru ---");
+    System.out.println(Console.Green("\n--- Daftar Guru ---"));
     if (guruList.isEmpty()) {
       System.out.println("Guru tidak ditemukan.");
     } else {
       int index = 1;
       for (Guru guru : guruList) {
-        System.out.println(index + ". " + guru.nama + " - " + guru.id);
+        System.out.println(index + ". " + guru.getDetails());
         index++;
       }
     }
@@ -57,7 +57,7 @@ class Guru extends User implements OperasiCRUD {
         return;
       }
     }
-    System.out.println("Guru not found.");
+    System.out.println("Guru tidak ditemukan.");
   }
 
   // Method to delete a student by ID
@@ -65,11 +65,11 @@ class Guru extends User implements OperasiCRUD {
     for (Guru guru : guruList) {
       if (guru.id == id) {
         guruList.remove(guru);
-        System.out.println("Guru deleted successfully!");
+        System.out.println("Guru berhasil dihapus!");
         return;
       }
     }
-    System.out.println("Guru not found.");
+    System.out.println("Guru tidak ditemukan.");
   }
 
   public static Guru getGuruById(int id) {

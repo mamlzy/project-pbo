@@ -7,10 +7,11 @@ public class Absen {
   public static HashMap<Integer, ArrayList<String>> attendanceRecords = new HashMap<>();
 
   public static void manageAttendance() {
-    System.out.println("\n--- Menu Absensi ---");
+    System.out.println(Console.Green("\n--- Menu Guru (Presensi) ---"));
     System.out.println("1. Pencatatan Presensi");
     System.out.println("2. Lihat Presensi");
-    System.out.print("Pilih opsi berikut: ");
+    System.out.println("3. Kembali ke Menu Utama Guru");
+    System.out.print("Pilih opsi: ");
 
     Scanner scanner = new Scanner(System.in);
     int choice = scanner.nextInt();
@@ -19,6 +20,7 @@ public class Absen {
     switch (choice) {
       case 1 -> catatPresensi();
       case 2 -> lihatPresensi();
+      case 3 -> Menu.menuGuru() ;
 
       default -> System.out.println("Invalid choice.");
     }
@@ -27,7 +29,7 @@ public class Absen {
   }
 
   public static void catatPresensi() {
-    System.out.print("Masukkan NIS: ");
+    System.out.print("\nMasukkan NIS: ");
     Scanner scanner = new Scanner(System.in);
 
     int siswaId = scanner.nextInt();
@@ -36,11 +38,9 @@ public class Absen {
     Siswa siswa = Siswa.getSiswaById(siswaId);
     if (siswa != null) {
       attendanceRecords.computeIfAbsent(siswaId, k -> new ArrayList<>()).add("Hadir");
-      System.out.println();
-      System.out.println("Presensi Berhasil dengan Nama " + siswa.getNama());
+      System.out.println(Console.Green("Presensi Berhasil dengan" + " NIS: " + siswa.getNis() + " Nama: " + siswa.getNama()) );
 
     } else {
-      System.out.println();
       System.out.println("Siswa tidak ditemukan.");
     }
 
