@@ -15,11 +15,11 @@ class Guru extends User implements OperasiCRUD {
   public String getNama() {
     return nama;
   }
-  
+
   @Override
   public String getDetails() {
-      return nama + " - " + id
-;  }
+    return nama + " - " + id;
+  }
 
   // Method to create a new student and add to the list
   public static void create(int id, String nama) {
