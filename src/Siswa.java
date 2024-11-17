@@ -90,7 +90,7 @@ class Siswa extends User implements OperasiCRUD {
     }
 
     System.out.println(Console.Green("\nNama: " + siswa.getNama()));
-    System.out.println(Console.Green("NIS: " + siswa.getNis()));
+    System.out.println(Console.Green("NIS: " + siswa.getId()));
 
     Menu.menuSiswa();
 
@@ -133,7 +133,7 @@ class Siswa extends User implements OperasiCRUD {
 
     if (siswa != null) {
       System.out.println(Console.Green("\nSiswa Ditemukan."));
-      System.out.println("NIS: " + siswa.getNis());
+      System.out.println("NIS: " + siswa.getId());
       System.out.println("Nama: " + siswa.getNama());
     } else {
       System.out.println(Console.Red("\nSiswa tidak ditemukan."));

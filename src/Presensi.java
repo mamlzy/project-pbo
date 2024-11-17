@@ -38,7 +38,7 @@ public class Presensi {
     Siswa siswa = Siswa.getSiswaById(siswaId);
     if (siswa != null) {
       presensiList.computeIfAbsent(siswaId, k -> new ArrayList<>()).add("Hadir");
-      System.out.println(Console.Green("Presensi Berhasil dengan" + " NIS: " + siswa.getNis() + " Nama: " + siswa.getNama()) );
+      System.out.println(Console.Green("Presensi Berhasil dengan" + " NIS: " + siswa.getId() + " Nama: " + siswa.getNama()) );
 
     } else {
       System.out.println(Console.Red("Siswa tidak ditemukan."));
@@ -66,7 +66,7 @@ public class Presensi {
 
       Siswa siswa = Siswa.getSiswaById(siswaId);
 
-      System.out.println("\nAbsen untuk Siswa: " + siswa.getNama() + " - " + siswa.getNis() + ": " + value);
+      System.out.println("\nAbsen untuk Siswa: " + siswa.getNama() + " - " + siswa.getId() + ": " + value);
     }
 
     Menu.menuGuru();
