@@ -36,7 +36,7 @@ class Siswa extends User implements OperasiCRUD {
   public static void readAll() {
     System.out.println(Console.Green("\n--- Daftar Siswa ---"));
     if (siswaList.isEmpty()) {
-      System.out.println("Siswa tidak diteukan.");
+      System.out.println("Siswa tidak ditemukan.");
     } else {
       int index = 1;
       for (Siswa siswa : siswaList) {
