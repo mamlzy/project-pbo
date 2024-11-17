@@ -8,11 +8,6 @@ class Guru extends User implements OperasiCRUD {
     super(id, nama);
   }
 
-  @Override
-  public String toString() {
-    return nama;
-  }
-
   public int getId() {
     return id;
   }

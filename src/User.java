@@ -7,12 +7,11 @@ abstract class User {
       this.nama = nama;
   }
 
-
   public int getId() {
       return id;
   }
 
-  public String getName() {
+  public String getNama() {
       return nama;
   }
 
