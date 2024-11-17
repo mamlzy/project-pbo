@@ -13,10 +13,12 @@ class Siswa extends User implements OperasiCRUD {
     return nama + " - " + id;
   }
 
-  public int getNis() {
+  @Override
+  public int getId() {
     return id;
   }
 
+  @Override
   public String getNama() {
     return nama;
   }
