@@ -9,11 +9,6 @@ class Siswa extends User implements OperasiCRUD {
   }
 
   @Override
-  public String getDetails() {
-    return nama + " - " + id;
-  }
-
-  @Override
   public int getId() {
     return id;
   }
@@ -22,6 +17,12 @@ class Siswa extends User implements OperasiCRUD {
   public String getNama() {
     return nama;
   }
+
+  @Override
+  public String getDetails() {
+    return nama + " - " + id;
+  }
+
 
   // Method to create a new student and add to the list
   public static void create(int id, String nama) {
