@@ -54,7 +54,7 @@ class Siswa extends User implements OperasiCRUD {
       }
     }
     System.out.println();
-    System.out.println("Siswa tidak ditemukan.");
+    System.out.println(Console.Red("Siswa tidak ditemukan."));
   }
 
   // Method to delete a student by ID
@@ -66,7 +66,7 @@ class Siswa extends User implements OperasiCRUD {
         return;
       }
     }
-    System.out.println("Siswa tidak ditemukan.");
+    System.out.println(Console.Red("Siswa tidak ditemukan."));
   }
 
   public static Siswa getSiswaById(int id) {
@@ -80,13 +80,18 @@ class Siswa extends User implements OperasiCRUD {
 
   public static void cekBiodata() {
     Scanner scanner = new Scanner(System.in);
-    System.out.print("Masukkan NIS: ");
+    System.out.print("\nMasukkan NIS: ");
     int id = scanner.nextInt();
 
     Siswa siswa = Siswa.getSiswaById(id);
 
-    System.out.println("Nama: " + siswa.getNama());
-    System.out.println("NIS: " + siswa.getNis());
+    if(siswa == null) {
+      System.out.println(Console.Red("\nSiswa tidak ditemukan."));
+      Menu.menuSiswa();
+    }
+
+    System.out.println(Console.Green("\nNama: " + siswa.getNama()));
+    System.out.println(Console.Green("NIS: " + siswa.getNis()));
 
     Menu.menuSiswa();
 
@@ -96,34 +101,31 @@ class Siswa extends User implements OperasiCRUD {
   public static void cekPresensi() {
     System.out.print("\nMasukkan NIS siswa: ");
 
+    @SuppressWarnings("resource")
     Scanner scanner = new Scanner(System.in);
 
     int id = scanner.nextInt();
     scanner.nextLine();
 
     Siswa siswa = Siswa.getSiswaById(id);
+    
+
+    ArrayList<String> records = Presensi.presensiList.get(id);
     if (siswa == null) {
       System.out.println();
-      System.out.println("Siswa tidak ditemukan.");
-      Menu.menuAdminSiswa();
-    }
-
-    ArrayList<String> records = Absen.attendanceRecords.get(id);
-    if (records != null && !records.isEmpty()) {
+      System.out.println(Console.Red("Siswa tidak ditemukan."));
+    } else if (records != null && !records.isEmpty()) {
       System.out.println("Kehadiran untuk NIS " + id + ": " + records);
+      
     } else {
       System.out.println("Siswa dengan NIS: " + siswa.id + ", Nama: " + siswa.nama +", " + Console.Red("tidak hadir."));
-      Menu.menuAdminSiswa();
     }
 
-    Menu.menuSiswa();
-
-    scanner.close();
   }
 
   public static void cariSiswa() {
     Scanner scanner = new Scanner(System.in);
-    System.out.print("Masukkan NIS: ");
+    System.out.print("\nMasukkan NIS: ");
 
     int id = scanner.nextInt();
     scanner.nextLine();
@@ -131,13 +133,11 @@ class Siswa extends User implements OperasiCRUD {
     Siswa siswa = getSiswaById(id);
 
     if (siswa != null) {
-      System.out.println();
-      System.out.println("Siswa Ditemukan.");
+      System.out.println(Console.Green("\nSiswa Ditemukan."));
       System.out.println("NIS: " + siswa.getNis());
       System.out.println("Nama: " + siswa.getNama());
     } else {
-      System.out.println();
-      System.out.println("Siswa tidak ditemukan.");
+      System.out.println(Console.Red("\nSiswa tidak ditemukan."));
     }
 
     Menu.menuGuru();

@@ -3,10 +3,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Absen {
-  public static HashMap<Integer, ArrayList<String>> attendanceRecords = new HashMap<>();
+public class Presensi {
+  public static HashMap<Integer, ArrayList<String>> presensiList = new HashMap<>();
 
-  public static void manageAttendance() {
+  public static void menuPresensi() {
     System.out.println(Console.Green("\n--- Menu Guru (Presensi) ---"));
     System.out.println("1. Pencatatan Presensi");
     System.out.println("2. Lihat Presensi");
@@ -37,38 +37,36 @@ public class Absen {
 
     Siswa siswa = Siswa.getSiswaById(siswaId);
     if (siswa != null) {
-      attendanceRecords.computeIfAbsent(siswaId, k -> new ArrayList<>()).add("Hadir");
+      presensiList.computeIfAbsent(siswaId, k -> new ArrayList<>()).add("Hadir");
       System.out.println(Console.Green("Presensi Berhasil dengan" + " NIS: " + siswa.getNis() + " Nama: " + siswa.getNama()) );
 
     } else {
-      System.out.println("Siswa tidak ditemukan.");
+      System.out.println(Console.Red("Siswa tidak ditemukan."));
     }
 
-    manageAttendance();
+    menuPresensi();
     scanner.close();
   }
 
   public static void lihatPresensi() {
     Scanner scanner = new Scanner(System.in);
-    // Memastikan bahwa attendanceRecords tidak kosong
-    if (attendanceRecords.isEmpty()) {
-      System.out.println();
-      System.out.println("Data Presensi Tidak Ditemukan!");
+    // Memastikan bahwa presensiList tidak kosong
+    if (presensiList.isEmpty()) {
+      System.out.println(Console.Red("\nData Presensi Belum Ada!"));
 
-      Absen.manageAttendance();
+      Presensi.menuPresensi();
       scanner.close();
       return;
     }
 
     // Menampilkan semua data absen tanpa meminta ID siswa
-    for (Map.Entry<Integer, ArrayList<String>> entry : attendanceRecords.entrySet()) {
+    for (Map.Entry<Integer, ArrayList<String>> entry : presensiList.entrySet()) {
       int siswaId = entry.getKey();
-      ArrayList<String> records = entry.getValue();
+      ArrayList<String> value = entry.getValue(); // [Hadir] atau [Tidak Hadir]
 
       Siswa siswa = Siswa.getSiswaById(siswaId);
 
-      System.out.println();
-      System.out.println("Absen untuk Siswa: " + siswa.getNama() + " - " + siswa.getNis() + ": " + records);
+      System.out.println("\nAbsen untuk Siswa: " + siswa.getNama() + " - " + siswa.getNis() + ": " + value);
     }
 
     Menu.menuGuru();

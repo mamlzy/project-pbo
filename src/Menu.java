@@ -41,7 +41,10 @@ public class Menu {
 
       switch (choice) {
         case 1 -> Siswa.cekBiodata();
-        case 2 -> Siswa.cekPresensi();
+        case 2 -> {
+          Siswa.cekPresensi();
+          Menu.menuSiswa();
+        }
         case 3 -> login();
         default -> System.out.println("\nMenu tidak ditemukan, mohon diulang");
       }
@@ -64,7 +67,7 @@ public class Menu {
       scanner.nextLine();
 
       switch (choice) {
-        case 1 -> Absen.manageAttendance();
+        case 1 -> Presensi.menuPresensi();
         case 2 -> Siswa.cariSiswa();
         case 3 -> login();
         default -> System.out.println("\nMenu tidak ditemukan, mohon diulang");
@@ -90,10 +93,7 @@ public class Menu {
       switch (choice) {
         case 1 -> Guru.readAll();
         case 2 -> Siswa.readAll();
-        case 3 -> {
-          System.out.println();
-          login();
-        }
+        case 3 -> login();
         default -> System.out.println("\nMenu tidak ditemukan, mohon diulang");
       }
     }
@@ -172,7 +172,10 @@ public class Menu {
 
           Siswa.delete(id);
         }
-        case 5 -> Siswa.cekPresensi();
+        case 5 -> {
+          Siswa.cekPresensi();
+          Menu.menuAdmin();
+        }
         case 6 -> Menu.menuAdmin();
         case 7 -> Menu.login();
         default -> System.out.println("\nMenu tidak ditemukan, mohon diulang");
