@@ -145,7 +145,7 @@ public class Menu {
 
       switch (choice) {
         case 1 -> {
-          System.out.print("Masukkan NIS: ");
+          System.out.print("\nMasukkan NIS: ");
           int id = scanner.nextInt();
           scanner.nextLine();
 

@@ -24,10 +24,9 @@ class Siswa extends User implements OperasiCRUD {
   // Method to create a new student and add to the list
   public static void create(int id, String nama) {
     Siswa newSiswa = new Siswa(id, nama);
-    System.out.println(nama);
-
     siswaList.add(newSiswa);
-    System.out.println("Siswa berhasil ditambahkan!");
+
+    System.out.println(Console.Green("\nSiswa " + nama + " berhasil ditambahkan!") );
   }
 
   // Method to view all students
