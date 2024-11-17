@@ -3,19 +3,18 @@ abstract class User {
   protected String nama;
 
   public User(int id, String nama) {
-      this.id = id;
-      this.nama = nama;
+    this.id = id;
+    this.nama = nama;
   }
 
   public int getId() {
-      return id;
+    return id;
   }
 
   public String getNama() {
-      return nama;
+    return nama;
   }
 
   // Abstract method for getting details
   public abstract String getDetails();
 }
-
